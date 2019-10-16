@@ -6,6 +6,7 @@ I thought of this ensemble strategy, When I participated in kaggle. Because I wa
 To demonstrate, I chose the very simple data set cifar-10 and three very common neural networks: two-layer CNN, full-connected neural network and VGG16. You can build very large classification tasks or choose very complex classification models and even modify the network structure of the policy part. The hyperparameters are set at the top of each script.
 ## Version
 keras:2.2.4
+
 tensorflow:1.13.1(it only ran on gpu before)
 ## Usage
 **Step 1.
