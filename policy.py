@@ -19,7 +19,7 @@ class Policy():
         Initialization method
         :param Input_shape:iterable, the input of the model, the shape of all the input of the model must be the same
         :param Classes: int, number of categories (currently only supports ensemble of the classification model)
-        :param *args: variable parameters, each input object must be compile keras model
+        :param *args: variable parameters, each input object must be compiled keras model object
             """
         assert type(classes) != 'int' or classes <= 1
 
