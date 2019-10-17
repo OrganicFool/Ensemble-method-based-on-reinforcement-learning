@@ -95,29 +95,29 @@ class Policy():
                 distributed_training_set[i] = np.asarray(distributed_training_set[i])
                 distributed_training_labels[i] = np.asarray(distributed_training_labels[i])
 
-    def predict_with_policy(self,testing_set):
+    def predict_with_policy(self,test_set):
         """
             Use this ensemble model to predict on testing data set
             :param testing_set: testing data set, the shape must match input_shape
             :return: the output of model
             """
-        action=self.agent.predict_classes(testing_set)
-        return map(lambda index,instance:self.model_list[action[index]].predict(instance),enumerate(testing_set))
+        action=self.agent.predict_classes(test_set)
+        return map(lambda index,instance:self.model_list[action[index]].predict(instance),enumerate(test_set))
 
-    def validate_with_policy(self,testing_set,testing_labels):
+    def validate_with_policy(self,test_set,test_labels):
         """
                 Use this ensemble model to validate the performance on testing data set
                     :param testing_set: testing data set, the shape must match input_shape
                     :param testing_labels: testing labels
                     :return:accuracy on testing data set
                     """
-        predictions=self.predict_with_policy(testing_set)
+        predictions=self.predict_with_policy(test_set)
         accuracy=np.argmax(predictions)
-        testing_labels=np.argmax(testing_labels)
-        return sum(accuracy==testing_labels)/testing_set.shape[0]
+        test_labels=np.argmax(test_labels)
+        return sum(accuracy==test_labels)/test_set.shape[0]
 
-    def get_action(self,testing_set):
-        return self.agent.predict_classes(testing_set)
+    def get_action(self,test_set):
+        return self.agent.predict_classes(test_set)
 
     def get_agent(self):
         return self.agent
